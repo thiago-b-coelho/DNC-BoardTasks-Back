@@ -10,7 +10,7 @@ async function authDocProducao(req, res, next) {
 
     if (senhaDigitada) {
         res.status(401).set('Content-Type', 'text/html');
-        res.end(Buffer.from(`
+        res.send(Buffer.from(`
         <form method="post">
             <p style="color:red">Senha Errada!</p>
             <label for="senhaDigitada">Senha da Documentação:</label>
@@ -20,7 +20,7 @@ async function authDocProducao(req, res, next) {
         `))
     } else {
         res.status(200).set('Content-Type', 'text/html');
-        res.end(Buffer.from(`
+        res.send(Buffer.from(`
         <form method="post">
             <label for="senhaDigitada">Senha da Documentação:</label>
             <input type="password" name="senhaDigitada" id="senhaDigitada"/>
