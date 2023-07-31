@@ -31,8 +31,8 @@ router.post('/criar', conectarBancoDados, async function (req, res) {
 
 router.post('/logar', conectarBancoDados, async function (req, res) {
   try {
+    // #swagger.tags = ['Usuario']
     let { email, senha } = req.body;
-
     let respostaBD = await EsquemaUsuario.findOne({ email }).select('+senha');
     if (respostaBD) {
       let senhaCorreta = await bcrypt.compare(senha, respostaBD.senha);
